@@ -1,0 +1,59 @@
+<!-- Stats window -->
+       
+        <div class="statsWrapper">
+            <div id="statsWindow" class="row stats{{kupela.id}} stats">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a class="pull-right closeStats"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="access-title text-center"><%= item.name %></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div id="chartContainer-<%= item.id %>"></div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div id="chartContainer2-<%= item.id %>"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <!-- FIN Stats window -->
+    
+        <div class="row single-kupela">
+            <div class="col-xs-4 vote-wrapper">
+                <div class="row text-center">
+                    <div class="col-xs-12 p-x-0">
+                    <img src="<%= item.picture %>" alt="kupela" class="single-kupela-img img-responsive"></img>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h3 id="<%= item.id %>" class="vote-count"><%= item.votes %><i class="fa fa-heart fa-1x" aria-hidden="true"></i></h3>
+                    </div>
+                     <div class="col-xs-6 p-x-0">   
+                        <button class="vote-button pull-right">
+                            <a class="btn-facebook" data-numero="<%= item.id %>" data-button="like">
+                                <img class="vote-logo" src="<%= asset_path('logo_reverse.png') %>"></img>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <div class="caption">
+                    <h3 class="card-title text-uppercase"><%= item.name %></h3>
+                    <p class="single-description"><%= item.description %></p>
+                    <button class="btn btn-primary btn-aviso pull-right" data-numero="<%= item.id %>" data-button="aviso"><%= t('boton.aviso') %></button>
+                    <button class="btn btn-primary btn-stats pull-right" id="stats<%= item.id %>"><%= t('boton.stats') %></button>
+                </div>
+            </div>
+        </div>

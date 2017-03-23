@@ -1,0 +1,156 @@
+   <div class="container">
+        <%= render 'facebook' %>
+        <div class="row single-sagardotegi">
+            <div class="col-xs-6">
+                <h1 class="card-title text-uppercase"><%= @place.name %></h1>
+                    <p class="single-description" id="descripcion"><%= @place.description %></p>
+                    <p class="single-description" id="descripcion"><%= @place.time %></p>
+                    <%= link_to map_path(@place.id) do %>
+                      <button type="button" class="btn btn-default"><%= t('paginas.sidrerias.llegar') %></button>
+                    <% end %>
+                    <button id="contactoSidreria" type="button" class="btn btn-default"><%= t('paginas.sidrerias.contacto') %></button>
+                    <div id="mostrarcontacto">
+                        <p class="single-description"><%= @place.address %></p>
+                        <a href="mailto:<%= @place.email %>"><p class="single-description"><%= @place.email %></p></a>
+                        <a href="tel:<%= @place.phone %>"><p class="single-description"><%= @place.phone %></p></a> 
+                    </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="card-single-direction text-uppercase text-center"><h4><%= @place.town %></h4></div>
+                <img class="single-img img-responsive img-rounded" src="<%= @place.picture %>"></img>
+            </div>
+        </div>
+    </div>
+    <script>
+        var pusher = new Pusher('a37218af0d3c7dcfceae', {
+            encrypted: true
+        });
+        var channel = pusher.subscribe('my-channel2');
+        channel.bind('my-event', function(data) {
+            document.getElementById(data.id).innerHTML = data.message + "<i class='fa fa-heart fa-1x' aria-hidden='true'></i>";
+        });
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    
+<div class="container-fluid">
+        
+    <div class="row p-x-1 kupela-list">
+        <div class="col-xs-12 col-md-8 col-md-offset-2 col-xl-6 col-xl-offset-3">
+          <%= render @place.items %>
+        </div>
+        
+    </div>
+    
+     <!-- <script src={{asset("js/estadisticas.min.js")}}></script>
+     <script type="text/javascript">
+      
+      window.onload = function () {
+         var kupelasid = [];
+         var kupelaslikes = [];
+         //var hombres2 = 0;
+         var kupelah = [];
+         var kupelam = [];
+         var ezh = 0;
+         var ezm = 0;
+         
+        {% for kupela in kupelas %}
+        {% set breakLooph = false %}
+            {% for hombre in hombres if breakLooph == false %}
+                {% if kupela.id == hombre.id %}
+                    //hombres2++;
+                    kupelah.push({{hombre.hombres}});
+                    ezh = 1;
+                    {% set breakLooph = true %}
+                {% else %}
+              	    ezh = 0;
+              	{% endif %}
+          	{% endfor %}
+          	
+        {% set breakLoopm = false %}
+          	{% for mujer in mujeres if breakLoopm == false %}
+                {% if kupela.id == mujer.id %}
+                    //hombres2++;
+                    kupelam.push({{mujer.mujeres}});
+                    ezm = 1;
+                    {% set breakLoopm = true %}
+                {% else %}
+                  	ezm = 0;
+              	{% endif %}
+          	{% endfor %}
+          	
+          	if(ezh == 0){ 
+          	    kupelah.push(0);
+          	} else {
+          	    ezh = 0;
+          	}
+          	if(ezm == 0){ 
+          	    kupelam.push(0);
+          	} else {
+          	    ezm = 0;
+          	}
+ 
+          	kupelasid.push({{kupela.id}});
+          	kupelaslikes.push({{kupela.numVotos}});
+        //hombres2 = 0;
+        {% endfor %}
+
+        var chart = [];
+        var chart2 = [];
+        //var anonimos;
+        for (i = 0; i < kupelasid.length; i++) {
+        anonimos = kupelaslikes[i] - kupelam[i] - kupelah[i];
+        chart[i] = new CanvasJS.Chart("chartContainer-"+kupelasid[i], {
+          		theme: "theme2",//theme1
+          		//width: 350,
+          		title:{
+          			text: "Likes a la kupela por GENERO"              
+          		},
+          		animationEnabled: false,   // change to true
+          		data: [              
+          		{
+          			// Change type to "bar", "area", "spline", "pie",etc.
+          			type: "bar",
+          			dataPoints: [
+          			    
+          				{ y: kupelam[i], label: "Mujeres" },
+          				{ y: kupelah[i], label: "Hombres" },
+          				{ y: anonimos, label: "Anónimos" }
+          				
+          			]
+          		}
+          		]
+          	});
+          	chart[i].render();
+          	
+        //anonimos = kupelaslikes[i] - kupelam[i] - kupelah[i];
+        chart2[i] = new CanvasJS.Chart("chartContainer2-"+kupelasid[i], {
+          		theme: "theme2",//theme1
+          		//width: 350,
+          		title:{
+          			text: "Likes a la kupela por FECHA"              
+          		},
+          		animationEnabled: false,   // change to true
+          		data: [              
+          		{
+          			// Change type to "bar", "area", "spline", "pie",etc.
+          			type: "column",
+          			dataPoints: [
+
+          			]
+          		}
+          		]
+          	});
+          	{% for fecha in fechas %}
+                if (kupelasid[i] == {{fecha.id}}){
+                    chart2[i].options.data[0].dataPoints.push({ label: "{{fecha.fecha}}",  y: {{fecha.NumVotos}} });
+                }
+            {% endfor %}
+          	chart2[i].render();
+          	
+        }
+        
+      }
+      </script> -->

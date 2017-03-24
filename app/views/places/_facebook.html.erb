@@ -49,9 +49,10 @@ function getAPI(idItem, button){
             type: "POST",
             dataType: "json",
             url: "<%= votes_action_path %>",
-            data: {response, id: idItem, button: button }
+            data: {response, item_id: idItem, button: button }
         });
     });
+    // App.item.update({votes: idItem});
 }
 
 </script>

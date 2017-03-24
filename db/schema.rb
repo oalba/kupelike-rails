@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317114214) do
+ActiveRecord::Schema.define(version: 20170324113121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "clients", force: :cascade do |t|
+  create_table "clients", id: :bigserial, force: :cascade do |t|
     t.string   "name"
     t.text     "address"
     t.date     "born_date"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20170317114214) do
 
   create_table "votes", force: :cascade do |t|
     t.integer  "item_id"
-    t.integer  "client_id"
+    t.bigint   "client_id"
     t.date     "date"
     t.boolean  "aviso"
     t.datetime "created_at", null: false

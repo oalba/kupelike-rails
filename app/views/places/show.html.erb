@@ -22,13 +22,13 @@
         </div>
     </div>
     <script>
-        var pusher = new Pusher('a37218af0d3c7dcfceae', {
-            encrypted: true
-        });
-        var channel = pusher.subscribe('my-channel2');
-        channel.bind('my-event', function(data) {
-            document.getElementById(data.id).innerHTML = data.message + "<i class='fa fa-heart fa-1x' aria-hidden='true'></i>";
-        });
+        // var pusher = new Pusher('a37218af0d3c7dcfceae', {
+        //     encrypted: true
+        // });
+        // var channel = pusher.subscribe('my-channel2');
+        // channel.bind('my-event2', function(data) {
+        //     document.getElementById(data.id).innerHTML = data.message + "<i class='fa fa-heart fa-1x' aria-hidden='true'></i>";
+        // });
     </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -39,6 +39,9 @@
         
     <div class="row p-x-1 kupela-list">
         <div class="col-xs-12 col-md-8 col-md-offset-2 col-xl-6 col-xl-offset-3">
+        <!-- <% if flash[:notice] %>
+          <div class="notice"><script>alert('<%= flash[:notice] %>');</script><%= flash[:notice] %></div>
+        <% end %> -->
           <%= render @place.items %>
         </div>
         

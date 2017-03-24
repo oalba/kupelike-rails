@@ -28,13 +28,10 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  # namespace :admin do
-  #   resources :items
-  # end
+  resources :clients
 
-  # resources :index do
-  #   resources :place
-  # end
+  # mount ActionCable.server => '/cable'
+  # resources :items
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'index#index'

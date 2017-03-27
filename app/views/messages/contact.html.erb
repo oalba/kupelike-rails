@@ -5,6 +5,9 @@
             <div class="row">
                 <h1 class="mtitle title-padding text-center"><%= t('paginas.contacto.titulo') %></h1>
             </div>
+            <% if flash[:notice] %>
+                <div class="notice alert alert-success"><%= flash[:notice] %></div>
+            <% end %>
             <div class="row">
                 <%= form_for @message, url: contact_path, class: 'contact_form' do |message_form| %>
                     <%= message_form.text_field :name, placeholder: t('paginas.contacto.nombre'), class: 'formulario' %>

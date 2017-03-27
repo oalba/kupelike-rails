@@ -40,6 +40,23 @@ module Admin
       redirect_to admin_place_path(@place)
     end
 
+    def update_year
+      @place = Place.find(params[:place_id])
+      @item = @place.items.find(params[:item_id])
+      @votes = Vote.select(:client_id).where(item_id: @item.id, aviso: true)
+      @clients = []
+      @votes.each do |vote|
+        @clients << Client.find(vote.client_id)
+      end
+
+      @clients.each do |client|
+        MessageMailer.send_aviso(client, @item, @place).deliver
+      end
+      Vote.where(item_id: @item.id).update_all(aviso: false)
+      @item.increment!("year", 1)
+      redirect_to admin_place_path(@place)
+    end
+
     private
 
       def item_params

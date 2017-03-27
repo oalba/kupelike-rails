@@ -39,7 +39,7 @@
                         </form>
                         <div class="col-xs-12">
                             <p class="text-right"><%= t('paginas.login.cuenta') %></p>
-                            <p class="text-right"><a href="{{path("registrar_form")}}"><%= t('paginas.login.solicitar') %></a></p>
+                            <p class="text-right"><%= link_to register_path, t('paginas.login.solicitar') %></p>
                             <!--<p class="text-right"><%= render "devise/shared/links" %></p> -->
                         </div>
                         </div>

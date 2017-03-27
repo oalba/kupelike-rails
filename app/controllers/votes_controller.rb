@@ -31,7 +31,7 @@ class VotesController < ApplicationController
             aviso = "You will be noticed when the cider is bottled!"
           end
         end
-        ActionCable.server.broadcast('items_channel', id: item.id, votes: item.votes, aviso: aviso)
+        ActionCable.server.broadcast('items_channel', id: item.id, votes: item.votes, user_id: client_id, aviso: aviso)
       else
         insert(item_id, client_id, today, action)
       end
@@ -60,6 +60,6 @@ class VotesController < ApplicationController
     end
     item = Item.find(item_id)
     item.increment!("votes", 1)
-    ActionCable.server.broadcast('items_channel', id: item.id, votes: item.votes, aviso: aviso)
+    ActionCable.server.broadcast('items_channel', id: item.id, votes: item.votes, user_id: client_id, aviso: aviso)
   end
 end

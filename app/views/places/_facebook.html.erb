@@ -44,6 +44,7 @@ function fb_login(idItem, button){
 function getAPI(idItem, button){
     // obtiene información del usuario y la muestra
     FB.api("/me?fields=id,name,email,age_range,birthday,gender,location", function(response){
+        window.fb_user = response.id;
         // Hace la llamada AJAX
         $.ajax({
             type: "POST",

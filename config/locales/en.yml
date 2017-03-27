@@ -79,6 +79,7 @@ en:
       registro:
           nombreyape: "Name and surnames:"
           email: "Email:"
+          phone: "Contact phone number:"
           nombresidre: "Name of the cider house:"
           direccion: "Address:"
           descripcion: "Description:"

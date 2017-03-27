@@ -3,12 +3,18 @@ Rails.application.routes.draw do
   # scope "/admin" do
   #   resources :users
   # end
+  scope "/api" do
+    get 'get_likes/:id', to: 'api#get_likes', as: 'get_likes'
+    get 'get_place/:id', to: 'api#get_place', as: 'get_place'
+  end
 
   # resources :user
   # get 'index', to: "index#index", as: "index"
   # get "contact", to: "static_pages#contact", as: "contact"
-  get 'contact', to: 'messages#new', as: 'contact'
+  get 'contact', to: 'messages#contact', as: 'contact'
   post 'contact', to: 'messages#create'
+  get 'register', to: 'messages#register', as: 'register'
+  post 'register', to: 'messages#register_send'
   get "about_us", to: "static_pages#about_us", as: "about_us"
   get "all_maps", to: "places#maps", as: "all_maps"
   get "map/:id", to: "places#map", as: "map"
@@ -23,7 +29,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :places do
-      resources :items
+      resources :items do
+        get "update_year", to: "items#update_year"
+        # resources :votes
+      end
     end
     resources :users
   end

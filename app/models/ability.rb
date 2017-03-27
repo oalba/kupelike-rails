@@ -11,7 +11,7 @@ class Ability
       can :show, Place, id: user.place_id
       can :update, Place, id: user.place_id
       can [:show, :update], User, id: user.id
-      can [:read, :update, :destroy], Item, place_id: user.place_id
+      can [:read, :update, :destroy, :update_year], Item, place_id: user.place_id
       can :create, Item
       # can :update, Item, place_id: user.place_id
       # can :destroy, Item, place_id: user.place_id

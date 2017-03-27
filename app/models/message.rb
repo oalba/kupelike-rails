@@ -3,7 +3,7 @@ class Message
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_accessor :name, :email, :content
+  attr_accessor :name, :email, :place_name, :phone, :address, :content
 
   validates :name,
     presence: true

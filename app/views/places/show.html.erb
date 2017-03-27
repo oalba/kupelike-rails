@@ -34,114 +34,81 @@
         </div>
         
     </div>
-    
-     <!-- <script src={{asset("js/estadisticas.min.js")}}></script>
-     <script type="text/javascript">
+<!-- <script type="text/javascript">
       
       window.onload = function () {
-         var kupelasid = [];
+        var kupelasid = [];
          var kupelaslikes = [];
          //var hombres2 = 0;
          var kupelah = [];
          var kupelam = [];
-         var ezh = 0;
-         var ezm = 0;
-         
-        {% for kupela in kupelas %}
-        {% set breakLooph = false %}
-            {% for hombre in hombres if breakLooph == false %}
-                {% if kupela.id == hombre.id %}
-                    //hombres2++;
-                    kupelah.push({{hombre.hombres}});
-                    ezh = 1;
-                    {% set breakLooph = true %}
-                {% else %}
-              	    ezh = 0;
-              	{% endif %}
-          	{% endfor %}
-          	
-        {% set breakLoopm = false %}
-          	{% for mujer in mujeres if breakLoopm == false %}
-                {% if kupela.id == mujer.id %}
-                    //hombres2++;
-                    kupelam.push({{mujer.mujeres}});
-                    ezm = 1;
-                    {% set breakLoopm = true %}
-                {% else %}
-                  	ezm = 0;
-              	{% endif %}
-          	{% endfor %}
-          	
-          	if(ezh == 0){ 
-          	    kupelah.push(0);
-          	} else {
-          	    ezh = 0;
-          	}
-          	if(ezm == 0){ 
-          	    kupelam.push(0);
-          	} else {
-          	    ezm = 0;
-          	}
- 
-          	kupelasid.push({{kupela.id}});
-          	kupelaslikes.push({{kupela.numVotos}});
-        //hombres2 = 0;
-        {% endfor %}
+        <% @items.each do |item| %>
+         <% @item_data.each do |item_d| %>
+            <% if item_d[:item_id] == item.id %>
+              kupelah.push("<%= item_d[:males] %>");
+              kupelam.push("<%= item_d[:females] %>");
+            <% end %>
+         <% end %>
+         kupelasid.push("<%= item.id %>");
+         kupelaslikes.push("<%= item.votes %>");
+        <% end %>
 
         var chart = [];
-        var chart2 = [];
-        //var anonimos;
+        // var chart2 = [];
+        var anonimous;
         for (i = 0; i < kupelasid.length; i++) {
-        anonimos = kupelaslikes[i] - kupelam[i] - kupelah[i];
+        anonimous = kupelaslikes[i] - kupelam[i] - kupelah[i];
         chart[i] = new CanvasJS.Chart("chartContainer-"+kupelasid[i], {
-          		theme: "theme2",//theme1
-          		//width: 350,
-          		title:{
-          			text: "Likes a la kupela por GENERO"              
-          		},
-          		animationEnabled: false,   // change to true
-          		data: [              
-          		{
-          			// Change type to "bar", "area", "spline", "pie",etc.
-          			type: "bar",
-          			dataPoints: [
-          			    
-          				{ y: kupelam[i], label: "Mujeres" },
-          				{ y: kupelah[i], label: "Hombres" },
-          				{ y: anonimos, label: "Anónimos" }
-          				
-          			]
-          		}
-          		]
-          	});
-          	chart[i].render();
-          	
-        //anonimos = kupelaslikes[i] - kupelam[i] - kupelah[i];
-        chart2[i] = new CanvasJS.Chart("chartContainer2-"+kupelasid[i], {
-          		theme: "theme2",//theme1
-          		//width: 350,
-          		title:{
-          			text: "Likes a la kupela por FECHA"              
-          		},
-          		animationEnabled: false,   // change to true
-          		data: [              
-          		{
-          			// Change type to "bar", "area", "spline", "pie",etc.
-          			type: "column",
-          			dataPoints: [
-
-          			]
-          		}
-          		]
-          	});
-          	{% for fecha in fechas %}
-                if (kupelasid[i] == {{fecha.id}}){
-                    chart2[i].options.data[0].dataPoints.push({ label: "{{fecha.fecha}}",  y: {{fecha.NumVotos}} });
+                theme: "theme2",//theme1
+                //width: 350,
+                title:{
+                    text: "Likes a la kupela por GENERO"              
+                },
+                animationEnabled: false,   // change to true
+                data: [              
+                {
+                    // Change type to "bar", "area", "spline", "pie",etc.
+                    type: "pie",
+                    dataPoints: [
+                        
+                        { y: kupelam[i], label: "Women" },
+                        { y: kupelah[i], label: "Men" },
+                        { y: anonimous, label: "Anonimous" }
+                        
+                    ]
                 }
-            {% endfor %}
-          	chart2[i].render();
-          	
+                ]
+            });
+            chart[i].render();
+          }
+            
+            
+        //anonimous = kupelaslikes - kupelam - kupelah;
+        // chart2 = new CanvasJS.Chart("chartContainer2-"+kupelaid, {
+        //         theme: "theme2",//theme1
+        //         //width: 350,
+        //         title:{
+        //             text: "Likes a la kupela por FECHA"              
+        //         },
+        //         animationEnabled: false,   // change to true
+        //         data: [              
+        //         {
+        //             // Change type to "bar", "area", "spline", "pie",etc.
+        //             type: "column",
+        //             dataPoints: [
+
+        //             ]
+        //         }
+        //         ]
+        //     });
+        //     {% for fecha in fechas %}
+        //         if (kupelasid == {{fecha.id}}){
+        //             chart2.options.data[0].dataPoints.push({ label: "{{fecha.fecha}}",  y: {{fecha.NumVotos}} });
+        //         }
+        //     {% endfor %}
+        //     chart2.render();
+            
         }
         
-      }
+      
       </script> -->

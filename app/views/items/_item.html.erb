@@ -1,7 +1,7 @@
 <!-- Stats window -->
        
         <div class="statsWrapper">
-            <div id="statsWindow" class="row stats{{kupela.id}} stats">
+            <div id="statsWindow" class="row stats<%= item.id %> stats">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-12">
@@ -15,12 +15,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-6">
+                        <!-- <div class="col-xs-6"> -->
+                        <div class="col-xs-12">
                             <div id="chartContainer-<%= item.id %>"></div>
                         </div>
-                        <div class="col-xs-6">
+                        <!-- <div class="col-xs-6">
                             <div id="chartContainer2-<%= item.id %>"></div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -57,3 +58,79 @@
                 </div>
             </div>
         </div>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> -->
+<!-- <script src={{asset("js/estadisticas.min.js")}}></script> -->
+     <script type="text/javascript">
+      
+      // window.onload = function () {
+         var kupelaid = <%= item.id %>;
+         var kupelalikes = <%= item.votes %>;
+         //var hombres2 = 0;
+         var kupelah = 0;
+         var kupelam = 0;
+         <% @item_data.each do |item_d| %>
+            <% if item_d[:item_id] == item.id %>
+              kupelah = <%= item_d[:males] %>;
+              kupelam = <%= item_d[:females] %>;
+            <% end %>
+         <% end %>
+
+        // var chart = [];
+        // var chart2 = [];
+        var anonimous;
+        anonimous = kupelalikes - kupelam - kupelah;
+        chart = new CanvasJS.Chart("chartContainer-"+kupelaid, {
+                theme: "theme2",//theme1
+                //width: 350,
+                title:{
+                    text: "Likes a la kupela por GENERO"              
+                },
+                animationEnabled: false,   // change to true
+                data: [              
+                {
+                    // Change type to "bar", "area", "spline", "pie",etc.
+                    type: "pie",
+                    dataPoints: [
+                        
+                        { y: kupelam, label: "Women" },
+                        { y: kupelah, label: "Men" },
+                        { y: anonimous, label: "Anonimous" }
+                        
+                    ]
+                }
+                ]
+            });
+            chart.render();
+            
+        // anonimous = kupelaslikes - kupelam - kupelah;
+        // chart2 = new CanvasJS.Chart("chartContainer2-"+kupelaid, {
+        //         theme: "theme2",//theme1
+        //         //width: 350,
+        //         title:{
+        //             text: "Likes a la kupela por FECHA"              
+        //         },
+        //         animationEnabled: false,   // change to true
+        //         data: [              
+        //         {
+        //             // Change type to "bar", "area", "spline", "pie",etc.
+        //             type: "column",
+        //             dataPoints: [
+
+        //             ]
+        //         }
+        //         ]
+        //     });
+        //     {% for fecha in fechas %}
+        //         if (kupelasid == {{fecha.id}}){
+        //             chart2.options.data[0].dataPoints.push({ label: "{{fecha.fecha}}",  y: {{fecha.NumVotos}} });
+        //         }
+        //     {% endfor %}
+        //     chart2.render();
+            
+        // }
+        
+      
+      </script>

@@ -17,4 +17,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( script.js )
 # Rails.application.config.assets.precompile += %w( favicon.ico )
 Rails.application.config.assets.precompile += ['*.js', '*.css', '**/*.js', '**/*.css', '*.woff2', '**/*.woff2']
-Rails.application.config.assets.precompile += ['estilo.css', 'bootstrap.min.css', 'font-awesome.min.css', 'jquery.min.js', 'bootstrap.min.js', 'script.js', 'favicon.ico', 'glyphicons-halflings-regular.woff2']
+Rails.application.config.assets.precompile += ['estilo.css', 'bootstrap.min.css', 'font-awesome.min.css', 'jquery.min.js', 'bootstrap.min.js', 'script.js', 'favicon.ico', 'estadisticas.min.js', 'glyphicons-halflings-regular.woff2']

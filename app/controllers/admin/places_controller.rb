@@ -19,7 +19,6 @@ module Admin
     end
 
     def create
-      # @place = Place.new(params[:place])
       @place = Place.new(place_params)
 
       if @place.save
@@ -27,7 +26,6 @@ module Admin
       else
         render 'new'
       end
-      # render plain: params[:place].inspect
     end
 
     def update

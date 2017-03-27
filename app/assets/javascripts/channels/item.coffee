@@ -8,3 +8,4 @@ App.item = App.cable.subscriptions.create "ItemChannel",
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
     $("#"+data["id"]).html(data["votes"] + "<i class='fa fa-heart fa-1x' aria-hidden='true'></i>")
+    alert(data["aviso"])

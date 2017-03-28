@@ -12,6 +12,8 @@
         
         
         <script>
+window.app_language = "<%= params["locale"] %>";
+
 $(document).ready(function(){
     $('#search').on('keyup keypress', function(e) {
       var keyCode = e.keyCode || e.which;
@@ -76,11 +78,11 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-xs-12 p-x-0">
                         <ul class="list-inline pull-right idiomas visible-md visible-lg visible-xl">
-                            <li class="es"><a>ES</a></li>
+                            <li class="es"><%= link_to_unless I18n.locale == :es, "ES", locale: :es %></li>
                             |
-                            <li class="eus"><a>EUS</a></li>
+                            <li class="eus"><%= link_to_unless I18n.locale == :eus, "EUS", locale: :eus %></li>
                             |
-                            <li class="en"><a>EN</a></li>
+                            <li class="en"><%= link_to_unless I18n.locale == :en, "EN", locale: :en %></li>
                         </ul>
                     </div>
                 </div>
@@ -89,7 +91,7 @@ $(document).ready(function(){
                         <a id="navbar-ham" class="navbar-ham toggle-button visible-xs visible-sm"><i class="fa fa-bars fa-4x" aria-hidden="true"></i></a>
                     </div>
                     <div class="col-xs-4 col-lg-3 navbar-header p-x-0">
-	                    <%= link_to root_path, { :class => 'navbar-title', :id => 'navbar-title' } do %>
+	                    <%= link_to index_path, { :class => 'navbar-title', :id => 'navbar-title' } do %>
 						    Kupe<img class="img-logo"/>Like
 						<% end %>
  					</div>
@@ -140,29 +142,29 @@ $(document).ready(function(){
         <div class="menu">
         <span><i class="fa fa-times fa-2x pull-right close-menu" aria-hidden="true"></i></span>
             <ul class="list-inline idiomas-side">
-                <li class="es"><a>ES</a></li>
+                <li class="es"><%= link_to_unless I18n.locale == :es, "ES", locale: :es %></li>
                 |
-                <li class="eus"><a>EUS</a></li>
+                <li class="eus"><%= link_to_unless I18n.locale == :eus, "EUS", locale: :eus %></li>
                 |
-                <li class="en"><a>EN</a></li>
+                <li class="en"><%= link_to_unless I18n.locale == :en, "EN", locale: :en %></li>
             </ul>
             <ul class="menu-links">
                 <% if user_signed_in? %>
                     <% if current_user.admin? %>
-                        <%= link_to admin_users_path do %><li><%= t('paginas_estaticas.menu.admuser') %></li><% end %>
-                        <%= link_to admin_places_path do %><li><%= t('paginas_estaticas.menu.admsidre') %></li><% end %>
+                        <%= menu_item admin_users_path, t('paginas_estaticas.menu.admuser') %>
+                        <%= menu_item admin_places_path, t('paginas_estaticas.menu.admsidre') %>
                     <% elsif current_user.seller? %>
-                        <%= link_to admin_place_path(current_user.place_id) do %><li><%= t('paginas_estaticas.menu.misidre') %></li><% end %>
-                        <%= link_to edit_admin_user_path(current_user.id) do %><li><%= t('paginas_estaticas.menu.perfil') %></li><% end %>
+                        <%= menu_item admin_place_path(current_user.place_id), t('paginas_estaticas.menu.misidre') %>
+                        <%= menu_item edit_admin_user_path(current_user.id), t('paginas_estaticas.menu.perfil') %>
                     <% end %>
-                    <%= link_to contact_path do %><li><%= t('paginas_estaticas.menu.ayuda') %></li><% end %>
+                    <%= menu_item contact_path, t('paginas_estaticas.menu.ayuda') %>
                     <%= link_to destroy_user_session_path, :method => :delete do %><li><%= t('paginas_estaticas.menu.salir') %></li><% end %>
                 <% else %>
-                    <%= link_to root_path do %><li><%= t('paginas_estaticas.menu.inicio') %></li><% end %>
-                    <%= link_to places_path do %><li><%= t('paginas_estaticas.menu.sidrerias') %></li><% end %>
-                    <%= link_to all_maps_path do %><li><%= t('paginas_estaticas.menu.mapa') %></li><% end %>
-                    <%= link_to contact_path do %><li><%= t('paginas_estaticas.menu.contacto') %></li><% end %>
-                    <%= link_to about_us_path do %><li><%= t('paginas_estaticas.menu.nosotros') %></li><% end %>
+                    <%= menu_item index_path, t('paginas_estaticas.menu.inicio') %>
+                    <%= menu_item places_path, t('paginas_estaticas.menu.sidrerias') %>
+                    <%= menu_item all_maps_path, t('paginas_estaticas.menu.mapa') %>
+                    <%= menu_item contact_path, t('paginas_estaticas.menu.contacto') %>
+                    <%= menu_item about_us_path, t('paginas_estaticas.menu.nosotros') %>
                     <a class="btn-access"><li><%= t('paginas_estaticas.menu.accederr') %></li></a>
                 <% end %>
             </ul>
@@ -236,7 +238,7 @@ $(document).ready(function(){
                     <div class="row">
                         <div class="col-xs-12 font-face-primary"> 
                             <ul class="list-inline footer-menu text-uppercase">
-                            	<li><%= link_to t('paginas_estaticas.footer.inicio'), root_path %></li>
+                            	<li><%= link_to t('paginas_estaticas.footer.inicio'), index_path %></li>
                                 <li><%= link_to t('paginas_estaticas.footer.mapa'), all_maps_path %></li>
                                 <li><%= link_to t('paginas_estaticas.footer.sidrerias'), places_path %></li>
                                 <li><%= link_to t('paginas_estaticas.footer.contacto'), contact_path %></li>

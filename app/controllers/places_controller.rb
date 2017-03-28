@@ -16,7 +16,7 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
-    @items = @place.items.where(place_id: @place.id)
+    @items = @place.items
     @votes = Vote.all
     @clients = Client.all
     males = 0

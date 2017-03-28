@@ -92,9 +92,9 @@ $(document).ready(function($){
 
   /** Language color change start **/
   function cambiarActive(){
-    var url = window.location.pathname;
+    var app_lang = window.app_language;
     
-    if ( url.indexOf("/es/") > -1 ){
+    if ( app_lang === "es" ){
       $('.idiomas').children('.es').removeClass('idiomas-non-active');
       $('.idiomas-side').children('.es').removeClass('idiomas-side-non-active');
       $('.idiomas').children('.es').addClass('idiomas-active');
@@ -107,7 +107,7 @@ $(document).ready(function($){
       $('.idiomas-side').children('.en').removeClass('idiomas-side-active');
       $('.idiomas').children('.en').addClass('idiomas-non-active');
       $('.idiomas-side').children('.en').addClass('idiomas-side-non-active');
-    } else if( url.indexOf("/eus/") > -1 ){
+    } else if( app_lang === "eus" ){
       $('.idiomas').children('.eus').removeClass('idiomas-non-active');
       $('.idiomas-side').children('.eus').removeClass('idiomas-side-non-active');
       $('.idiomas').children('.eus').addClass('idiomas-active');
@@ -120,7 +120,7 @@ $(document).ready(function($){
       $('.idiomas-side').children('.en').removeClass('idiomas-side-active');
       $('.idiomas').children('.en').addClass('idiomas-non-active');
       $('.idiomas-side').children('.en').addClass('idiomas-side-non-active');
-    } else if( url.indexOf("/en/") > -1 ){
+    } else if( app_lang === "en" ){
       $('.idiomas').children('.en').removeClass('idiomas-non-active');
       $('.idiomas-side').children('.en').removeClass('idiomas-side-non-active');
       $('.idiomas').children('.en').addClass('idiomas-active');

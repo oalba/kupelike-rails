@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   # before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_locale
 
   # protected
 
@@ -18,4 +19,10 @@ class ApplicationController < ActionController::Base
     ## this render call should be:
     # render file: "#{Rails.root}/public/403", formats: [:html], status: 403, layout: false
   end
+
+  private
+    def set_locale
+      I18n.locale = params[:locale] || I18n.default_locale
+      Rails.application.routes.default_url_options[:locale] = I18n.locale 
+    end
 end

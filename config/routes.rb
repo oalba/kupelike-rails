@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  match "/403", to: "errors#access_denied", via: :all, as: 'error_403'
+  match "/404", to: "errors#not_found", via: :all, as: 'error_404'
+  match "/500", to: "errors#internal_server_error", via: :all, as: 'error_500'
+
   # scope "(:locale)", locale: /en|es|eus/ do
   # scope "/:locale" do
   devise_for :users
@@ -39,4 +43,7 @@ Rails.application.routes.draw do
   #   # root 'index#index'
   #   get "index"
   # end
+
+  # Error 404 route
+  get '*pages', to: 'errors#not_found'
 end

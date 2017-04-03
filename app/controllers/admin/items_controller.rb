@@ -21,21 +21,38 @@ module Admin
       # @item = Item.new(params[:item])
       @place = Place.find(params[:place_id])
       @item = @place.items.build(item_params)
-      @item.votes = 0
+      @item.votes_count = 0
       @item.save
-      redirect_to admin_place_path(@place)
+      if @item.save
+        flash[:success] = "Item created successfully."
+        redirect_to admin_place_path(@place)
+      else
+        flash[:error] = "Item could not be created."
+        render 'new'
+      end
     end
 
     def update
       @place = Place.find(params[:place_id])
       @item = @place.items.find(params[:id])
-      @item.update(item_params)
-      redirect_to admin_place_path(@place)
+
+      if @item.update(item_params)
+        flash[:success] = "Item updated successfully."
+        redirect_to admin_place_path(@place)
+      else
+        flash[:error] = "Item could not be updated."
+        render 'edit'
+      end
     end
 
     def destroy
       @place = Place.find(params[:place_id])
-      @item = @place.items.delete(params[:id])
+      # @item = @place.items.delete(params[:id])
+      if @place.items.delete(params[:id])
+        flash[:success] = "Item deleted successfully."
+      else
+        flash[:error] = "Item could not be deleted."
+      end
       # @item.destroy
       redirect_to admin_place_path(@place)
     end
@@ -60,7 +77,7 @@ module Admin
     private
 
       def item_params
-        params.require(:item).permit(:name, :description, :picture, :year, :place_id, :votes)
+        params.require(:item).permit(:name, :description, :picture, :year, :place_id, :votes_count)
       end
   end
 end

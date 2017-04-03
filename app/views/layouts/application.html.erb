@@ -196,6 +196,22 @@ $(document).ready(function(){
                 </div>
             </div>
         </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+                    <% if flash[:notice] %>
+                        <div class="notice alert alert-info"><%= flash[:notice] %></div>
+                    <% end %>
+                    <% if flash[:success] %>
+                        <div class="notice alert alert-success"><%= flash[:success] %></div>
+                    <% end %>
+                    <% if flash[:error] %>
+                        <div class="notice alert alert-danger"><%= flash[:error] %></div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        
         <!-- Access window END -->
                 
         <!-- IMPORTANTE -> Todos los ficheros que se cargen en el block body deben empezar con un div container-fluid!!!!

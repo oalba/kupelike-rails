@@ -42,6 +42,8 @@ gem 'pry-rails', :group => :development
 gem 'figaro'
 # facebook API
 gem 'omniauth-facebook'
+# simple form
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

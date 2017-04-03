@@ -25,8 +25,10 @@ module Admin
       @user = User.new(user_params)
 
       if @user.save
+        flash[:success] = "User created successfully."
         redirect_to admin_users_path
       else
+        flash[:error] = "User could not be created."
         render 'new'
       end
       # render plain: params[:user].inspect
@@ -49,10 +51,13 @@ module Admin
 
     def destroy
       @user = User.find(params[:id])
-      @user.destroy
-
+      if @user.destroy
+        flash[:success] = "User deleted successfully."
+      else
+        flash[:error] = "User could not be deleted."
+      end
       redirect_to admin_users_path
-      index
+      # index
     end
 
     def update
@@ -63,8 +68,14 @@ module Admin
         @user.update_attributes(user_params)
       end
       if @user.errors.blank?
-        redirect_to admin_users_path
+        flash[:success] = "User updated successfully."
+        if current_user.role == "admin"
+          redirect_to admin_users_path
+        else
+          redirect_to index_path
+        end
       else
+        flash[:error] = "User could not be updated."
         render :edit
       end
     end

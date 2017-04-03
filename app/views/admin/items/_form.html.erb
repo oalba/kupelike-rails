@@ -1,4 +1,4 @@
-<%= form_for([:admin, @place, @item], class: 'contact_form') do |f| %>
+<%= simple_form_for([:admin, @place, @item], class: 'contact_form') do |f| %>
 
     <label><%= t('labels.kupela.nombre') %></label><%= f.text_field :name, class: 'formulario', placeholder: 'Name', required: true %>
     <label><%= t('labels.kupela.descripcion') %></label><%= f.text_area :description, class: 'formulario', placeholder: 'Description', style: 'resize: vertical;' %>

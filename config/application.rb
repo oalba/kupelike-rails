@@ -29,6 +29,6 @@ module Kupelike
 
     # config.i18n.default_locale = :en
 
-    config.exceptions_app = self.routes
+    # config.exceptions_app = self.routes
   end
 end

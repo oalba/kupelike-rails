@@ -22,8 +22,10 @@ module Admin
       @place = Place.new(place_params)
 
       if @place.save
+        flash[:success] = "Place created successfully."
         redirect_to admin_places_path
       else
+        flash[:error] = "Place could not be created."
         render 'new'
       end
     end
@@ -32,18 +34,23 @@ module Admin
       @place = Place.find(params[:id])
 
       if @place.update(place_params)
+        flash[:success] = "Place updated successfully."
         redirect_to admin_place_path(@place)
       else
+        flash[:error] = "Place could not be updated."
         render 'edit'
       end
     end
 
     def destroy
       @place = Place.find(params[:id])
-      @place.destroy
-
+      if @place.destroy
+        flash[:success] = "Place deleted successfully."
+      else
+        flash[:error] = "Place could not be deleted."
+      end
       redirect_to admin_places_path
-      index
+      # index
     end
 
     private

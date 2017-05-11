@@ -95,7 +95,7 @@ body::-webkit-scrollbar-thumb {
 .navbar {
     
     position: fixed;
-    min-height: 100px !important;
+    min-height: 50px !important;
     margin-bottom: 0px !important;
     background-color: white;
     z-index: 3;
@@ -137,6 +137,7 @@ body::-webkit-scrollbar-thumb {
     color: #629c44;
     font-family: 'Lobster', cursive;
     line-height: 120px;
+    white-space: nowrap;
 }
 
 .navbar-title:hover, .navbar-title:active, .navbar-title:focus, .navbar-title:visited {
@@ -1220,6 +1221,14 @@ input:checked + .slider:before {
 
 /*###Desktops, big landscape tablets and laptops(Large, Extra large)####*/
 @media screen and (min-width: 1024px){
+    .fa-2x {
+        font-size: 1.5em;
+    }
+    
+    body {
+        padding-top: 50px;
+    }
+
     #accessWindow {
         top: 40%;
         left: 50%;
@@ -1237,15 +1246,41 @@ input:checked + .slider:before {
     }
     
     .navbar-title {
-        font-size: 50px;
+        font-size: 40px;
+        line-height: 70px;
+        padding: 0px 15px;
     }
     
     .img-logo{
-        height: 66px;
+        height: 60px;
+    }
+    
+    .desktop-menu-links {
+        margin-bottom: -15px;
+        padding-bottom: 0px;
+        margin-top: -4px;
+    }
+    
+    .desktop-menu {
+        padding-top: 0px;
+    }
+    
+    .navbar-search-btn, .navbar-search-btn:hover, .navbar-search-btn:active,
+    .navbar-search-btn:focus, .navbar-search-btn:visited {
+        margin-top: 20px;
+        height: 45px;
+        width: 45px;
+        padding-top: 10px;
     }
     
     .searchBox {
         font-size: 14px;
+        margin-top: 20px;
+        height: 45px;
+    }
+    
+    .welcome {
+        margin-top: -50px !important;
     }
     
     .welcome-text {

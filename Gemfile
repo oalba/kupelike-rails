@@ -46,7 +46,7 @@ gem 'omniauth-facebook'
 # simple form
 gem 'simple_form'
 
-gem 'redis'
+# gem 'redis'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

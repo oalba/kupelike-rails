@@ -90,7 +90,7 @@ $(document).ready(function(){
                     <div class="col-xs-1 navbar-header hidden-md hidden-lg">
                         <a id="navbar-ham" class="navbar-ham toggle-button visible-xs visible-sm"><i class="fa fa-bars fa-4x" aria-hidden="true"></i></a>
                     </div>
-                    <div class="col-xs-5 col-lg-3 navbar-header p-x-0">
+                    <div class="col-xs-4 col-lg-3 navbar-header p-x-0">
 	                    <%= link_to index_path, { :class => 'navbar-title', :id => 'navbar-title' } do %>
 						    Kupe<img class="img-logo"/>Like
 						<% end %>
@@ -115,7 +115,7 @@ $(document).ready(function(){
                             <% end %>
                         </ul>  
                     </div>
-                    <div class="col-xs-6 col-md-1">
+                    <div class="col-xs-7 col-md-1">
                         <%= form_tag(search_places_path, :method => "get", id: "navbar-search", class: "pull-right p-x-0", role: "search") do %>
                             <div class="form-group">
                               <%= text_field_tag :search, params[:search], placeholder: t('paginas_estaticas.menu.buscar'), class: "searchBox hidden", id: "search" %>

@@ -46,7 +46,7 @@ $(document).ready(function($){
       event.preventDefault();
       var target = "#" + this.getAttribute('data-target');
       $('html, body').animate({
-          scrollTop: $(target).offset().top -130
+          scrollTop: $(target).offset().top -80
       }, 1500);
   });
   /** Scroll to Sagardotegiak end **/

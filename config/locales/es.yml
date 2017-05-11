@@ -123,8 +123,8 @@ es:
           mas: "¡Serás notificado cuando la kupela sea embotellada!"
           menos: "¡NO serás notificado cuando la kupela sea embotellada!"
       votoaviso:
-          mas: "Voto añadido correctamente!\n¡Serás notificado cuando la kupela sea embotellada!"
-          menos: "Voto eliminado correctamente!\n¡NO serás notificado cuando la kupela sea embotellada!"
+          mas: "¡Voto añadido correctamente!\n¡Serás notificado cuando la kupela sea embotellada!"
+          menos: "¡Voto eliminado correctamente!\n¡NO serás notificado cuando la kupela sea embotellada!"
   paginas:
       mapa:
           titulo: "Mapa"

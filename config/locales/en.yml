@@ -116,6 +116,16 @@ en:
       perfilsidre: "Profile of the cider house"
       listakupelas: "List of the kupelas"
       login: "Access to KupeLike"
+  alerts:
+      voto:
+          mas: "Vote added successfully!"
+          menos: "Vote deleted successfully!"
+      aviso:
+          mas: "You will be noticed when the cider is bottled!"
+          menos: "You WILL NOT be noticed when the cider is bottled!"
+      votoaviso:
+          mas: "Vote added successfully!\nYou will be noticed when the cider is bottled!"
+          menos: "Vote deleted successfully!\nYou WILL NOT be noticed when the cider is bottled!"
   paginas:
       mapa:
           titulo: "Map"

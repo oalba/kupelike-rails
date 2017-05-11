@@ -13,9 +13,11 @@ class VotesController < ApplicationController
         when "like"
           # Delete the vote and show prompt
           if Vote.where(client_id: client_id, item_id: item_id, date: today, aviso: true).exists?
-            aviso = "Vote deleted successfully!\nYou WILL NOT be noticed when the cider is bottled!"
+            # aviso = "Vote deleted successfully!\nYou WILL NOT be noticed when the cider is bottled!"
+            aviso = t('alerts.votoaviso.menos')
           else
-            aviso = "Vote deleted successfully!"
+            # aviso = "Vote deleted successfully!"
+            aviso = t('alerts.voto.menos')
           end
           Vote.where(client_id: client_id, item_id: item_id, date: today).destroy_all
           item.decrement!("votes_count", 1)
@@ -23,12 +25,14 @@ class VotesController < ApplicationController
           if Vote.where(client_id: client_id, item_id: item_id, date: today, aviso: true).exists?
             # Cange aviso = false and show prompt
             Vote.where(client_id: client_id, item_id: item_id).update_all(aviso: false)
-            aviso = "You WILL NOT be noticed when the cider is bottled!"
+            # aviso = "You WILL NOT be noticed when the cider is bottled!"
+            aviso = t('alerts.aviso.menos')
           else
             # Cange aviso = true and show prompt
             Vote.where(client_id: client_id, item_id: item_id).update_all(aviso: false)
             Vote.where(client_id: client_id, item_id: item_id, date: today).first.update_attribute(:aviso, true)
-            aviso = "You will be noticed when the cider is bottled!"
+            # aviso = "You will be noticed when the cider is bottled!"
+            aviso = t('alerts.aviso.mas')
           end
         end
         ActionCable.server.broadcast('items_channel', id: item.id, votes: item.votes_count, user_id: client_id, aviso: aviso)
@@ -52,11 +56,13 @@ class VotesController < ApplicationController
     when "like"
       # Insert the vote with aviso = false and show prompt
       Vote.create(item_id: item_id, client_id: client_id, date: today, aviso: false)
-      aviso = "Vote added successfully!"
+      # aviso = "Vote added successfully!"
+      aviso = t('alerts.voto.mas')
     when "aviso"
       # Insert the vote with aviso = true and show prompt
       Vote.create(item_id: item_id, client_id: client_id, date: today, aviso: true)
-      aviso = "Vote added successfully!\nYou will be noticed when the cider is bottled!"
+      # aviso = "Vote added successfully!\nYou will be noticed when the cider is bottled!"
+      aviso = t('alerts.votoaviso.mas')
     end
     item = Item.find(item_id)
     item.increment!("votes_count", 1)

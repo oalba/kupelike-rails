@@ -107,7 +107,7 @@ $(document).ready(function($){
       $('.idiomas-side').children('.en').removeClass('idiomas-side-active');
       $('.idiomas').children('.en').addClass('idiomas-non-active');
       $('.idiomas-side').children('.en').addClass('idiomas-side-non-active');
-    } else if( app_lang === "eus" ){
+    } else if( app_lang === "eu" ){
       $('.idiomas').children('.eus').removeClass('idiomas-non-active');
       $('.idiomas-side').children('.eus').removeClass('idiomas-side-non-active');
       $('.idiomas').children('.eus').addClass('idiomas-active');

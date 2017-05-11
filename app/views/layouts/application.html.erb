@@ -80,7 +80,7 @@ $(document).ready(function(){
                         <ul class="list-inline pull-right idiomas visible-md visible-lg visible-xl">
                             <li class="es"><%= link_to_unless I18n.locale == :es, "ES", locale: :es %></li>
                             |
-                            <li class="eus"><%= link_to_unless I18n.locale == :eus, "EUS", locale: :eus %></li>
+                            <li class="eus"><%= link_to_unless I18n.locale == :eu, "EUS", locale: :eu %></li>
                             |
                             <li class="en"><%= link_to_unless I18n.locale == :en, "EN", locale: :en %></li>
                         </ul>
@@ -144,7 +144,7 @@ $(document).ready(function(){
             <ul class="list-inline idiomas-side">
                 <li class="es"><%= link_to_unless I18n.locale == :es, "ES", locale: :es %></li>
                 |
-                <li class="eus"><%= link_to_unless I18n.locale == :eus, "EUS", locale: :eus %></li>
+                <li class="eus"><%= link_to_unless I18n.locale == :eu, "EUS", locale: :eu %></li>
                 |
                 <li class="en"><%= link_to_unless I18n.locale == :en, "EN", locale: :en %></li>
             </ul>

@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   resources :places do
     resources :items
   end
+  
+  # WHY!!!!!?????
+  resources :items
 
   namespace :admin do
     resources :places do

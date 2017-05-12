@@ -71,9 +71,9 @@ class PlacesController < ApplicationController
     else
       @places = Place.all.order('name asc')
     end
-    render json: @places
-    # respond_to do |format|
-    #   format.json { render json: @places }
-    # end
+    # render json: @places
+    respond_to do |format|
+      format.json { render json: @places }
+    end
   end
 end

@@ -46,7 +46,7 @@ gem 'omniauth-facebook'
 # simple form
 gem 'simple_form'
 # serializer
-# gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers', '~> 0.10.0'
 
 # gem 'redis'
 # Use Capistrano for deployment

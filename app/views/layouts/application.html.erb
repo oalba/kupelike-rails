@@ -34,24 +34,25 @@ $(document).ready(function(){
                     console.log(response);
                     $("#searchResults").show();
                     $("#searchResults").html("");
-                    $.each(response, function(index, place){
+                    $.each(response.data, function(index, place){
+                        var attributes = place.attributes;
                         var ida = place.id;
-                        var sfoto = place.picture;
+                        var sfoto = attributes.picture;
                         var route = "<%= place_path('xxx') %>".replace("xxx", ida);
                         var llegar = "<%= map_path('xxx') %>".replace("xxx", ida);
                         
                         $("#searchResults").append(
     "<hr class='search-hr'><div class='row'>"+
-        "<a name='"+place.name+"' href='"+route+"'>"+
+        "<a name='"+attributes.name+"' href='"+route+"'>"+
             "<div class='col-xs-offset-2 col-xs-5'>"+
-                "<h2 class='card-title text-uppercase'>"+place.name+"</h2>"+
+                "<h2 class='card-title text-uppercase'>"+attributes.name+"</h2>"+
                 "<div class='card-margen-20'>"+
-                    "<p class='card-description' id='descripcion'>"+place.description+"</p>"+
+                    "<p class='card-description' id='descripcion'>"+attributes.description+"</p>"+
                     "<a href='"+llegar+"'><button type='button' class='btn btn-default'><%= t('paginas.sidrerias.llegar') %></button></a>"+
                 "</div>"+
             "</div>"+
         "</a>"+
-        "<a name='"+place.name+"' href='"+route+"'>"+
+        "<a name='"+attributes.name+"' href='"+route+"'>"+
             "<div class='col-xs-4'>"+
                 "<div class='card-sidreria'>"+
                     "<img class='img-responsive img-search' src='"+sfoto+"'></img>"+

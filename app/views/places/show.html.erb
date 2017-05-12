@@ -42,16 +42,7 @@
          //var hombres2 = 0;
          var kupelah = [];
          var kupelam = [];
-        <% @items.each do |item| %>
-         <% @item_data.each do |item_d| %>
-            <% if item_d[:item_id] == item.id %>
-              kupelah.push("<%= item_d[:males] %>");
-              kupelam.push("<%= item_d[:females] %>");
-            <% end %>
-         <% end %>
-         kupelasid.push("<%= item.id %>");
-         kupelaslikes.push("<%= item.votes %>");
-        <% end %>
+        
 
         var chart = [];
         // var chart2 = [];

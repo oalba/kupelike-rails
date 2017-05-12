@@ -66,17 +66,50 @@
      <script type="text/javascript">
       
       // window.onload = function () {
-         var kupelaid = <%= item.id %>;
+        //  var kupelaid = <%= item.id %>;
+        //  var kupelalikes = <%= item.votes_count %>;
+        //  //var hombres2 = 0;
+        //  var kupelah = 0;
+        //  var kupelam = 0;
+        //  <% @item_data.each do |item_d| %>
+        //     <% if item_d[:item_id] == item.id %>
+        //       kupelah = <%= item_d[:males] %>;
+        //       kupelam = <%= item_d[:females] %>;
+        //     <% end %>
+        //  <% end %>
+
+        // // var chart = [];
+        // // var chart2 = [];
+        // var anonimous;
+        // anonimous = kupelalikes - kupelam - kupelah;
+        // chart = new CanvasJS.Chart("chartContainer-"+kupelaid, {
+        //         theme: "theme2",//theme1
+        //         //width: 350,
+        //         title:{
+        //             text: "Likes a la kupela por GENERO"              
+        //         },
+        //         animationEnabled: false,   // change to true
+        //         data: [              
+        //         {
+        //             // Change type to "bar", "area", "spline", "pie",etc.
+        //             type: "pie",
+        //             dataPoints: [
+                        
+        //                 { y: kupelam, label: "Women" },
+        //                 { y: kupelah, label: "Men" },
+        //                 { y: anonimous, label: "Anonimous" }
+                        
+        //             ]
+        //         }
+        //         ]
+        //     });
+        //     chart.render();
+        
+        var kupelaid = <%= item.id %>;
          var kupelalikes = <%= item.votes_count %>;
          //var hombres2 = 0;
-         var kupelah = 0;
-         var kupelam = 0;
-         <% @item_data.each do |item_d| %>
-            <% if item_d[:item_id] == item.id %>
-              kupelah = <%= item_d[:males] %>;
-              kupelam = <%= item_d[:females] %>;
-            <% end %>
-         <% end %>
+         var kupelah = <%= item.statistics[:males] %>;
+         var kupelam = <%= item.statistics[:females] %>;
 
         // var chart = [];
         // var chart2 = [];

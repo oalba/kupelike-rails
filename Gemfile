@@ -47,6 +47,8 @@ gem 'omniauth-facebook'
 gem 'simple_form'
 # serializer
 gem 'active_model_serializers', '~> 0.10.0'
+# Access from external page
+gem 'rack-cors', :require => 'rack/cors'
 
 # gem 'redis'
 # Use Capistrano for deployment

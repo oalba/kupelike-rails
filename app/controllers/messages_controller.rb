@@ -7,7 +7,10 @@ class MessagesController < ApplicationController
     @message = Message.new(contact_params)
 
     MessageMailer.new_message(@message).deliver
-    redirect_to contact_path, notice: "Your messages has been sent."
+    # redirect_to contact_path, notice: "Your messages has been sent."
+    respond_to do |format|
+      format.html
+    end
   end
 
   def register

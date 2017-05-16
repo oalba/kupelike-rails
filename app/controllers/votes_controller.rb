@@ -36,6 +36,10 @@ class VotesController < ApplicationController
           end
         end
         ActionCable.server.broadcast('items_channel', id: item.id, votes: item.votes_count, user_id: client_id, aviso: aviso)
+        respond_to do |format|
+          msg = { id: item.id, votes: item.votes_count, user_id: client_id, aviso: aviso }
+          format.json { render json: msg }
+        end
       else
         insert(item_id, client_id, today, action)
       end
@@ -67,5 +71,9 @@ class VotesController < ApplicationController
     item = Item.find(item_id)
     item.increment!("votes_count", 1)
     ActionCable.server.broadcast('items_channel', id: item.id, votes: item.votes_count, user_id: client_id, aviso: aviso)
+    respond_to do |format|
+      msg = { id: item.id, votes: item.votes_count, user_id: client_id, aviso: aviso }
+      format.json { render json: msg }
+    end
   end
 end

@@ -34,7 +34,15 @@ class ApplicationController < ActionController::Base
       # else
       #   I18n.locale = params[:locale]
       # end
-      I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
+      locales = ["es","en","eu"]
+      user_language = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
+      if locales.include? user_language
+        I18n.locale = user_language
+      else
+        I18n.locale = "es"
+      end
+      # I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
+      
       Rails.application.routes.default_url_options[:locale] = I18n.locale
     end
     

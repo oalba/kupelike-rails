@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 
     MessageMailer.new_message(@message).deliver
     # redirect_to contact_path, notice: "Your messages has been sent."
-    redirect_to(:back)
+    redirect_to(:back, notice: "Your messages has been sent.")
     # respond_to do |format|
     #   format.html
     # end

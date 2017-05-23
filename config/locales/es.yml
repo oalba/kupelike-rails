@@ -79,6 +79,7 @@ es:
       registro:
           nombreyape: "Nombre y apellidos:"
           email: "Email:"
+          phone: "Teléfono de contacto:"
           nombresidre: "Nombre de la sidrería:"
           direccion: "Dirección:"
           descripcion: "Descripción:"

@@ -1593,6 +1593,15 @@ input:checked + .slider:before {
     .subfooter {
         font-size: 2em;
     }
+    .wrapper {
+        margin: 0 auto -439px; /* the bottom margin is the negative value of the footer's height */
+        /*margin: 0 auto -368px;*/
+    }
+    
+    .footer, .push {
+        height: 439px; /* .push must be the same height as .footer */
+        /*height: 368px;*/
+    }
 }
 
 /* Error page */

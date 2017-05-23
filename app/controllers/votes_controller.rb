@@ -45,8 +45,18 @@ class VotesController < ApplicationController
       end
     else
       name = response[:name]
-      address = response[:location][:name]
-      born_date = response[:birthday]
+      if response[:location]
+        address = response[:location][:name]
+      else
+        address = ""
+      end
+      # address = response[:location][:name]
+      if response[:birthday]
+        born_date = response[:birthday]
+      else
+        born_date = ""
+      end
+      # born_date = response[:birthday]
       gender = response[:gender]
       email = response[:email]
       # Create the client
